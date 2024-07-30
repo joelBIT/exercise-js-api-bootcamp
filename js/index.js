@@ -1,13 +1,10 @@
 'use strict';
 
-
 const body = document.querySelector('body');
-
 
 /**
  * Exercise 1
  */
-
 async function getPokemons() {
     fetch('https://santosnr6.github.io/Data/pokemons.json')
     .then((response) => {
@@ -37,7 +34,6 @@ function addElementToDOM(text) {
 /**
  * Exercise 2
  */
-
 async function getDogs() {
     fetch('https://majazocom.github.io/Data/dogs.json')
     .then((response) => {
@@ -61,7 +57,6 @@ async function getDogs() {
 /**
  * Exercise 3
  */
-
 async function getBooks() {
     fetch('https://majazocom.github.io/Data/books.json')
     .then((response) => {
@@ -86,7 +81,6 @@ async function getBooks() {
 /**
  * Exercise 4
  */
-
 async function getAttendees() {
     fetch('https://majazocom.github.io/Data/attendees.json')
     .then((response) => {
@@ -111,7 +105,58 @@ async function getAttendees() {
     });
 }
 
-getPokemons();
-getDogs();
-getBooks();
-getAttendees();
+//getPokemons();
+//getDogs();
+//getBooks();
+//getAttendees();
+
+
+
+/**
+ * Exercise 5
+ */
+
+let responseMovies = [];
+
+async function getMovies() {
+    fetch('https://santosnr6.github.io/Data/movies_long.json')
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((movies) => {
+        console.log(movies);
+        responseMovies = movies;
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+
+async function getMovieInfo() {
+    fetch('http://www.omdbapi.com/?i=tt1285016&plot=full&apikey=2566aeaa')
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((movies) => {
+        console.log(movies);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+
+window.onload = () => {
+    getMovies();
+    getMovieInfo();
+}
+
+
+
+
+
