@@ -9,7 +9,7 @@ const body = document.querySelector('body');
  */
 
 async function getPokemons() {
-    fetch('https://majazocom.github.io/Data/pokemons.json')
+    fetch('https://santosnr6.github.io/Data/pokemons.json')
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status}`);
