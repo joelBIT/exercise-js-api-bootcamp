@@ -117,6 +117,7 @@ async function getAttendees() {
  */
 
 let responseMovies = [];
+const cards = document.querySelector('.cards');
 
 async function getMovies() {
     fetch('https://santosnr6.github.io/Data/movies_long.json')
@@ -129,6 +130,7 @@ async function getMovies() {
     .then((movies) => {
         console.log(movies);
         responseMovies = movies;
+        createMovieCards();
     })
     .catch((error) => {
         console.log(error);
@@ -156,7 +158,32 @@ window.onload = () => {
     getMovieInfo();
 }
 
+function createMovieCards() {
+    for (let i = 0; i < responseMovies.length; i++) {
+        createMovieCard(responseMovies[i]);
+    }
+}
 
+function createMovieCard(movie) {
+    let card = document.createElement('article');
+    card.classList.add('card');
 
+    let figure = document.createElement('figure');
+    figure.classList.add('movie');
+    let image = document.createElement('img');
+    image.setAttribute('src', movie.poster);
+    image.setAttribute('alt', movie.title);
+    figure.appendChild(image);
+    card.appendChild(figure);
 
+    let title = document.createElement("h3");
+    title.appendChild(document.createTextNode(movie.title));
+    card.appendChild(title);
 
+    let button = document.createElement('button');
+    button.classList.add('add');
+    button.appendChild(document.createTextNode(`Add to cart`));
+    card.appendChild(button);
+
+    cards.appendChild(card);
+}
