@@ -4,17 +4,26 @@ body {
     display: grid;
 }
 
-nav {
-    ul {
-        display: flex;
-        list-style-type: none;
-        justify-content: space-around;
-        margin: 0;
+header {
+    display: flex;
+    justify-content: space-between;
 
-        a {
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 500;
+    nav {
+        align-content: center;
+        margin-right: 3rem;
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+            margin: 0;
+            gap: 1rem;
+    
+            a {
+                text-decoration: none;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
         }
     }
 }
