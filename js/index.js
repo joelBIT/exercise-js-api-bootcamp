@@ -118,6 +118,7 @@ async function getAttendees() {
 
 let responseMovies = [];
 const cards = document.querySelector('.cards');
+const loginForm = document.querySelector('#loginForm');
 
 async function getMovies() {
     fetch('https://santosnr6.github.io/Data/movies_long.json')
@@ -194,3 +195,29 @@ function createMovieCard(movie) {
     card.appendChild(div);
     cards.appendChild(card);
 }
+
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('Form submitted');
+
+    try {
+        const username = event.target.username.value;
+        const password = event.target.password.value;
+
+        let user = localStorage.getItem(username);
+        console.log(user);
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        user = JSON.parse(user);
+
+        if(user.password === password) {
+            document.querySelector('#loginError').textContent = 'Login successful';
+        } else {
+            throw new Error('Incorrect password');
+        }
+    } catch (error) {
+        document.querySelector('#loginError').textContent = error.message;
+    }
+});
