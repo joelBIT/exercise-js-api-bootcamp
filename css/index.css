@@ -90,6 +90,10 @@ main {
         height: 100vh;
         grid-column: 3 / span 2;
 
+        #registerForm {
+            display: none;
+        }
+
         form {
             display: flex;
             flex-direction: column;
