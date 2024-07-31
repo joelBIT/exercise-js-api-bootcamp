@@ -180,10 +180,17 @@ function createMovieCard(movie) {
     title.appendChild(document.createTextNode(movie.title));
     card.appendChild(title);
 
+    let div = document.createElement('div');
+    div.classList.add('cost');
+    let cost = document.createElement("h4");
+    cost.appendChild(document.createTextNode(Math.floor(Math.random() * 250) + ' $'));
+    div.appendChild(cost);
+
     let button = document.createElement('button');
     button.classList.add('add');
     button.appendChild(document.createTextNode(`Add to cart`));
-    card.appendChild(button);
-
+    
+    div.appendChild(button);
+    card.appendChild(div);
     cards.appendChild(card);
 }
